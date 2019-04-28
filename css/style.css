@@ -1,0 +1,24 @@
+.candidate-table {
+	display: table;
+	overflow-x: auto;
+}
+.candidate-col, .labels {
+	display: table-cell;
+	width: 500px;
+	vertical-align: top;
+}
+
+.labels div {
+	width: 200px;
+	height: 50px;
+	border: 1px solid black;
+}
+
+div.candidates {
+	display: table-cell;
+}
+.candidate-col div{
+	width: 500px;
+	height: 50px;
+	border: 1px solid black;
+}

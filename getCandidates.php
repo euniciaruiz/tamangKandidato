@@ -5,7 +5,7 @@
    $dbhost = 'localhost';
    $dbuser = 'root';
    $dbpass = 'root';
-   $dbname = 'tamangKandidato';
+   $dbname = 'tamaka29_tamangKandidato';
    $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
    
 

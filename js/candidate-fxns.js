@@ -76,19 +76,45 @@ function getAllCandidates(){
 }
 
 function compareCandidates(id){
-	// if($(id).prop("checked")){
-	// 	for (var i = 0; i < allCandidates.length; i++) {
-	// 		if(allCandidates[i].id == id.value)
-	// 	}
-	// }else{
-	// 	candidatesToCompare.pop(id.value);
-	// }
+	var candidate;
+	for (var i = 0; i < allCandidates.length; i++) {
+			if(allCandidates[i].id == id.value){
+				candidate = allCandidates[i];
+			}
+	}
+	if($(id).prop("checked")){
+		candidatesToCompare.push(candidate);
+	}else{
+		candidatesToCompare.pop(candidate);
+	}
+}
+
+function showComparison(){
+		console.log(candidatesToCompare);
+		var str = "";
+		for (var i = candidatesToCompare.length - 1; i >= 0; i--) {
+			var candidate = candidatesToCompare[i];
+			str += "<div class='candidate-col'><div><span>" + candidate.name + "</span></div>" +
+				"<div><span>" + candidate.party + "</span></div>" + 
+				"<div><span>" + candidate.education + "</span></div>" + 
+				"<div><span>" + candidate.prof_background + "</span></div>" +
+				"<div><span>" + candidate.achievements + "</span></div>" + 
+				"<div><span>" + candidate.govt_relatives + "</span></div></div>";
+		}
 
 
+
+		$("#candidate-comparison .candidates").append(str);
+		$("#front-page").hide();
+		$("#single-candidate").hide();
+		$("#compareBtn").hide();
+		$("#candidate-comparison").show();
 }
 
 function goToHomePage(){
+	$("#candidate-comparison").hide();
 	$("#single-candidate").hide();
 	$("#front-page").show();
+	$("#compareBtn").show();
 	$("#single-candidate #candidate-details").html("");
 }
