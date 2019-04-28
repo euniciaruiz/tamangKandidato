@@ -6,6 +6,7 @@ $(document).ready(function(){
 });
 
 var candidatesToCompare = [];
+var allCandidates = [];
 function showCandidate(id){
 	//ajax code to get data from database. don't edit this
 		$.ajax({
@@ -23,7 +24,7 @@ function showCandidate(id){
 
 
 
-				$("#candidate-list").hide();
+				$("#front-page").hide();
 				var str = "";
 
 				str += "<h1>Profile</h1> <div>Name: "+ name +"</div>" +
@@ -50,7 +51,7 @@ function showCandidate(id){
 				"<div>Katotohanan: "+ candidate.truth +"</div><div>Moralidad: "+ candidate.morals +"</div>" +
 				"<div>Kalikasan: " +candidate.earth + "</div>"; 
 
-				$("#single-candidate").append(str);
+				$("#single-candidate #candidate-details").append(str);
 				$("#single-candidate").show();
 			}
 		})
@@ -64,8 +65,9 @@ function getAllCandidates(){
 				var candidates = JSON.parse(data);
 				var str = "";
 				for (var i = 0; i < candidates.length; i++) {
+					allCandidates.push(candidates[i]);
 					var id = candidates[i].id;
-					str += "<input type='checkbox' onclick='compareCandidates($(this).attr(`id`))' value="+ id +" id=candidate-"+ id +"><span onclick='showCandidate("+id+")'>" + candidates[i].name + "</span><br>";
+					str += "<input type='checkbox' onclick='compareCandidates(this)' value="+ id +" id=candidate-"+ id +"><span onclick='showCandidate("+id+")'>" + candidates[i].name + "</span><br>";
 				}
 				$("#candidate-list").append(str);
 
@@ -74,6 +76,19 @@ function getAllCandidates(){
 }
 
 function compareCandidates(id){
-	candidatesToCompare.push(id);
-	console.log(candidatesToCompare);
+	// if($(id).prop("checked")){
+	// 	for (var i = 0; i < allCandidates.length; i++) {
+	// 		if(allCandidates[i].id == id.value)
+	// 	}
+	// }else{
+	// 	candidatesToCompare.pop(id.value);
+	// }
+
+
+}
+
+function goToHomePage(){
+	$("#single-candidate").hide();
+	$("#front-page").show();
+	$("#single-candidate #candidate-details").html("");
 }

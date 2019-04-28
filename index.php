@@ -14,7 +14,12 @@
 		</div>
 
 		<div id="single-candidate" style="display:none;" >
-			
+			<div id="candidate-details"></div>
+			<button id="backToCandidates" onclick="goToHomePage();">Back</button>
+		</div>
+
+		<div id="candidate-comparison" style="display: none;">
+
 		</div>
 	</body>
 </html>
